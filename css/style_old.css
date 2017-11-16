@@ -1,0 +1,349 @@
+* {
+	box-sizing:border-box;
+}
+
+[data-role='header'],
+[data-role='footer'] {
+	border-width:0;
+}
+[data-role='main'] {
+	position:relative;
+	/* PROBLEM: comment it because the HOME PAGE is sharing this data-role with LANDING PAGE, and it's not neccessarily having the background with the logo show out there*/
+	/* SOLUTION: crop the img size and put it back to the div#logo on LANDING PAGE */
+	/*background-image: url("../img/landing_logo.png");
+	background-position: center;
+	background-repeat: no-repeat;*/
+}
+
+
+[data-role=header],
+[data-role=footer] {
+	height:2.5em;
+}
+[data-role='main']:first-child {
+	height: 100vh;
+	overflow:auto;
+}
+[data-role='footer']:first-child +
+[data-role='main'],
+[data-role='header']:first-child +
+[data-role='main'] {
+	height: calc(100vh - 2.5rem - 1px);
+	overflow:auto;
+
+}
+[data-role='header'] +
+[data-role='footer'] +
+[data-role='main'] {
+	height: calc(100vh - (2.5rem * 2) - 1px);
+	overflow:auto;
+}
+
+[data-role='footer']:first-child +
+[data-role='main'] {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+[data-role='header']+[data-role='footer'],
+[data-role='footer']:first-child {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+
+
+
+.flex-parent {
+	display:flex;
+}
+.flex-child {
+	flex:1 1 auto;
+}
+.flex-none {
+	flex:none;
+}
+
+[data-role=header] a,
+[data-role=footer] a {
+	display:block;
+	line-height:2.5em;
+	text-align:center;
+	font-weight:bold;
+	text-decoration: none;
+	padding: 0 1em;
+	font-size:12px;
+}
+[data-role=header] h1.ui-title {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	margin:0;
+	z-index:-1;
+}
+
+/*Login page start*/
+#logo{
+	color: Black;
+	text-align: center;
+	height: 70%;
+}
+
+#login-form{
+	width:250px;
+	margin:0 auto;
+	margin-top:100px;
+}
+
+#loginbtn{
+	background-color: grey;
+}
+
+.sign-up{
+	text-align: center;
+	margin:0 auto;
+}
+/*Login page end*/
+
+
+
+/*Landing Page start*/
+
+#logo img {
+	text-align: center;
+	/* TIPS: whenever the size of img doesn't work, try width and height between percentage and vh and em. */
+	max-width: 70%;
+	max-height: 90vh;
+}
+
+/*Landing Page end*/
+
+
+
+ 
+
+/*slide menu start*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {overflow-x: hidden;}
+
+header {
+	background: #EEEEEE;
+	padding: 10px;
+	overflow: hidden;
+}
+
+header h1 {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	width: 80%;
+	font-size: 1.5em;
+}
+h1 a {color: #000; text-decoration: none;}
+
+/*header input {
+	float: right;
+	padding: 10px;
+	width: 100px;
+	border: none;
+}*/
+
+.main {
+	padding: 10px;
+	text-align: center;
+}
+
+
+.menu-active {
+	background: black;
+}
+
+
+menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 140px;
+	height: 100%;
+	padding-top: 10px;
+	background: #BDBDBD;
+	box-shadow: inset -2px 0px 2px 0 rgba(0,0,0,.3)
+}
+
+menu li a {
+	display: block;
+	/*border-bottom: 1px solid rgba(255,255,255,.3);*/
+	margin: 0 10px;
+	padding: 10px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+menu li a:hover {
+	/*background: #FFF;*/
+	color: black;
+}
+
+menu {
+	-webkit-transform: translateX(-140px);
+	-moz-transform: translateX(-140px);
+	-ms-transform: translateX(-140px);
+	transform: translateX(-140px);
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	transition: all .25s linear;
+}
+
+header, .main {
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	transition: all .25s linear;
+}
+
+.menu-active menu {
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+}
+
+.menu-active header, 
+.menu-active .main {
+	-webkit-transform: translateX(140px);
+	-moz-transform: translateX(140px);
+	-ms-transform: translateX(140px);
+	transform: translateX(140px);
+}
+
+/*slide menu end*/
+
+
+/* The slide in push over effect start */
+/* These rules are used in every example */
+.for-label {
+  outline:0;
+  display:inline-block;
+  width:2rem;
+  height:2rem;
+  text-align:center;
+  line-height:2rem;
+  font-size:1.5em;
+}
+.hidden {
+  display:none;
+}
+
+.push-menu {
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+.push-menu:after {
+  clear:both;
+  display:none;
+  content:'';
+}
+[class*='col-'] {
+  float:left;
+}
+.col-side {
+  width:200px;
+  position:absolute;
+  top:0;
+  left:0;
+  transition:all 0.3s;
+  transform:translateX(-200px);
+  background-color:#555;
+  height:100%;
+  color:white;
+  box-shadow:inset -4px 0 5px rgba(0,0,0,0.2);
+}
+.col-main {
+  width:100%;
+  transition:all 0.3s;
+  transform:translateX(0);
+  background-color:#eee;
+  height:100%;
+}
+.push-menu>input[type=checkbox]:checked~.col-side {
+  transform:translateX(0);
+} 
+.push-menu>input[type=checkbox]:checked~.col-main {
+  transform:translateX(200px);
+} 
+
+/* The slide in push over effect ends */
+
+
+
+/* Main-page tile align starts */
+.container {
+	margin-left: auto;
+	margin-right: auto;
+}
+.row:after {
+	clear:both;
+	content: '';
+	display: table;
+}
+.row .flew {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-wrap: wrap;
+}
+.col-sm-3 {
+	float: left;
+	width: 50%;
+}
+.wrap .col-sm-3 {
+	float: none;
+	flex:1 1 auto;
+}
+
+
+/* progress circle code reference: http://codepen.io/jacobhummel/pen/kyugL */
+/* PROGRESS CIRCLE COMPONENT */
+.circliful {
+    margin:auto;
+    position: relative; 
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+	color: #999;
+}
+
+.circliful .fa {
+	margin: -10px 3px 0 3px;
+	position: relative;
+	bottom: 4px;
+}
+
+
+/* map function css starts here */
+#map {
+	height: 70%;
+}
